@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Brain for Hackathons</title>
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #f1f5f9;
+            --muted: #94a3b8;
+            --accent: #38bdf8;
+            --danger: #ef4444;
+            --success: #10b981;
+            --border: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 8rem 0;
+            background: radial-gradient(circle at top right, rgba(56,189,248,0.12), transparent);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+        }
+
+        .highlight {
+            color: var(--accent);
+        }
+
+        .tagline {
+            max-width: 700px;
+            margin: 2rem auto 3rem;
+            font-size: 1.3rem;
+            color: var(--muted);
+        }
+
+        /* BUTTONS */
+        .btn {
+            border: none;
+            border-radius: 10px;
+            padding: 0.9rem 2rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .primary-btn {
+            background: var(--accent);
+            color: #020617;
+        }
+
+        .primary-btn:hover {
+            background: #7dd3fc;
+        }
+
+        .large-btn {
+            width: 100%;
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* TITLES */
+        .section-title {
+            text-align: center;
+            font-size: 2.3rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 3rem;
+            color: var(--muted);
+        }
+
+        /* COMPARISON */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .comparison-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+        }
+
+        .messy h3 { color: var(--danger); }
+        .organized h3 { color: var(--success); }
+
+        .comparison-card ul {
+            list-style: none;
+        }
+
+        .comparison-card li {
+            margin-bottom: 1rem;
+        }
+
+        /* INPUT */
+        .input-card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 180px;
+            background: #020617;
+            border: 1px solid var(--border);
+            color: var(--text);
+            border-radius: 10px;
+            padding: 1.2rem;
+            font-size: 1rem;
+        }
+
+        /* OUTPUT */
+        .output-section {
+            display: none;
+        }
+
+        .output-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .output-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .output-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .step span {
+            background: var(--accent);
+            color: #020617;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            border: 1px solid rgba(56,189,248,0.3);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            color: var(--accent);
+            font-size: 0.85rem;
+        }
+
+        .task-list {
+            list-style: none;
+        }
+
+        .task-list li {
+            margin-bottom: 0.7rem;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .comparison-grid,
+            .output-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="container">
+        <h1>Fix Your <span class="highlight">Hackathon Chaos</span></h1>
+        <p class="tagline">
+            Turn messy midnight ideas into a clear plan your team can actually build.
+        </p>
+        <button class="btn primary-btn" onclick="scrollToInput()">Get Started</button>
+    </div>
+</header>
+
+<!-- COMPARISON -->
+<section>
+    <div class="container">
+        <h2 class="section-title">Before vs After</h2>
+        <div class="comparison-grid">
+            <div class="comparison-card messy">
+                <h3>Before</h3>
+                <ul>
+                    <li>Random ideas everywhere</li>
+                    <li>No clear direction</li>
+                    <li>Too many features</li>
+                    <li>Last-minute panic</li>
+                </ul>
+            </div>
+            <div class="comparison-card organized">
+                <h3>After</h3>
+                <ul>
+                    <li>Clear problem & solution</li>
+                    <li>Focused feature set</li>
+                    <li>Simple execution plan</li>
+                    <li>Confident final demo</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- INPUT -->
+<section id="inputSection">
+    <div class="container">
+        <h2 class="section-title">Dump Your Ideas</h2>
+        <p class="section-subtitle">
+            Type anything. No structure needed.
+        </p>
+
+        <div class="input-card">
+            <textarea id="ideaInput" placeholder="Example:
+We want to build something with AI
+Maybe for students or resumes
+Need frontend, backend, AI
+Hackathon is only 24 hours..."></textarea>
+
+            <button class="btn primary-btn large-btn" onclick="fixPlan()">
+                Fix My Plan
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- OUTPUT -->
+<section class="output-section" id="outputSection">
+    <div class="container">
+        <h2 class="section-title">Your Organized Plan</h2>
+
+        <div class="output-grid">
+            <div class="output-card">
+                <h3>Build Path</h3>
+                <div id="buildPath"></div>
+            </div>
+
+            <div class="output-card">
+                <h3>Suggested Tech</h3>
+                <div class="tags" id="techStack"></div>
+            </div>
+
+            <div class="output-card">
+                <h3>Do These First</h3>
+                <ul class="task-list" id="taskList"></ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    Second Brain for Hackathons • Demo Ready
+</footer>
+
+<script>
+function scrollToInput() {
+    document.getElementById("inputSection")
+        .scrollIntoView({ behavior: "smooth" });
+}
+
+function fixPlan() {
+    const input = document.getElementById("ideaInput").value.trim();
+
+    if (!input) {
+        alert("Please enter your idea first!");
+        return;
+    }
+
+    const steps = [
+        "Define the core problem and target users",
+        "Select one winning feature",
+        "Design basic UI screens",
+        "Build minimal backend logic",
+        "Polish demo and pitch"
+    ];
+
+    const tech = [
+        "HTML/CSS",
+        "JavaScript",
+        "Node.js",
+        "Express",
+        "OpenAI API",
+        "Vercel"
+    ];
+
+    const tasks = [
+        "Create project repository",
+        "Sketch user flow",
+        "Build first screen",
+        "Connect one API",
+        "Prepare demo explanation"
+    ];
+
+    const buildPath = document.getElementById("buildPath");
+    const techStack = document.getElementById("techStack");
+    const taskList = document.getElementById("taskList");
+
+    buildPath.innerHTML = "";
+    techStack.innerHTML = "";
+    taskList.innerHTML = "";
+
+    steps.forEach((step, i) => {
+        buildPath.innerHTML += `
+            <div class="step">
+                <span>${i + 1}</span> ${step}
+            </div>`;
+    });
+
+    tech.forEach(t => {
+        techStack.innerHTML += `<span class="tag">${t}</span>`;
+    });
+
+    tasks.forEach(task => {
+        taskList.innerHTML += `<li>☑ ${task}</li>`;
+    });
+
+    document.getElementById("outputSection").style.display = "block";
+    document.getElementById("outputSection")
+        .scrollIntoView({ behavior: "smooth" });
+}
+</script>
+
+</body>
+</html>
