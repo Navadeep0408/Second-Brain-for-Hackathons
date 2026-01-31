@@ -1,20 +1,49 @@
 # Second-Brain-for-Hackathons
 
 ## Problem
-Hackathon teams dump ideas everywhere and struggle to convert chaos into a clear plan.
+Hackathon teams often fail not because of lack of ideas, but because of lack of clarity.
+Teams struggle with scope creep, too many features, and unclear execution plans under extreme time pressure.
+There is no quick tool that helps teams decide what to build first — and what to avoid.
 
-## Solution
-An AI-powered second brain that converts messy hackathon notes into a structured plan, feature list, and README.
+## Solution 
+Second Brain for Hackathons helps teams dump messy ideas and instantly get a structured execution plan.
+It focuses on clarity, scope reduction, and demo readiness rather than feature overload.
 
 ## Tech Stack
-- Python
-- Flask
-- OpenAI API
+Frontend: HTML, CSS, JavaScript  
+Backend: Flask (Python)  
+AI (Conceptual / Optional): OpenAI API  
+Deployment: Static hosting / Local server
 
-## How it Works
-1. User pastes raw notes
-2. AI structures them into a roadmap
-3. Outputs plan + README content
+## Simple Architecture Diagram
+User Browser
+   ↓
+Frontend (HTML/CSS/JS)
+   ↓
+Logic Layer (Idea Processing / AI-ready)
+   ↓
+Structured Output (Plan, Cuts, Tasks)
 
-## How to Run
-See RUN.md
+## AI Tools Used
+OpenAI (used for idea structuring and execution planning during development and testing).
+
+## Prompt Strategy Summary 
+We used structured prompting to:
+- Convert unstructured ideas into step-by-step plans
+- Identify unnecessary features
+- Prioritize demo-critical tasks
+
+Prompts were designed to act like a hackathon mentor rather than a generic chatbot.
+
+## Setup Instructions 
+1. Clone the repository
+2. Open index.html in a browser
+3. Enter any hackathon idea
+4. Click “Fix My Plan” to view structured output
+
+## Final Output
+The application outputs:
+- A clear execution roadmap
+- Suggested focus areas
+- A list of tasks to start immediately
+
